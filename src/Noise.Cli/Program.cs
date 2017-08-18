@@ -1,9 +1,10 @@
 ﻿using System;
 using DocoptNet;
+using System.Drawing;
 
 namespace Noise.Cli
 {
-    class Program
+	internal class Program
     {
 		private const string usage = @"Naval Fate.
 

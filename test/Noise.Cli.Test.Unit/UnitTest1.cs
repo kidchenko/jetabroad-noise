@@ -8,7 +8,8 @@ namespace Noise.Cli.Test.Unit
         [Fact]
         public void Test1()
         {
-
+            var result = ImprovedNoise.Perlin(1, 1, 1);
+            Console.WriteLine(result);
         }
     }
 }
