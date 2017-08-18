@@ -32,5 +32,5 @@ namespace Noise.Cli
 				Console.WriteLine("{0} = {1}", argument.Key, argument.Value);
 			}
 		}
-    }
+  }
 }
