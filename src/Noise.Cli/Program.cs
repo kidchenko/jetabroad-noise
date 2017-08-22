@@ -1,12 +1,13 @@
 ﻿using System;
 using DocoptNet;
-using System.Drawing;
+using ImageSharp;
+
 
 namespace Noise.Cli
 {
-	internal class Program
+    internal class Program
     {
-		private const string usage = @"Naval Fate.
+        private const string usage = @"Naval Fate.
 
     Usage:
       noise.cli.exe ship new <name>...
@@ -25,13 +26,32 @@ namespace Noise.Cli
 
     ";
 
-		private static void Main(string[] args)
-		{
-			var arguments = new Docopt().Apply(usage, args, version: "Naval Fate 2.0", exit: true);
-			foreach (var argument in arguments)
-			{
-				Console.WriteLine("{0} = {1}", argument.Key, argument.Value);
-			}
-		}
-  }
+        private static void Main(string[] args)
+        {
+            //var arguments = new Docopt().Apply(usage, args, version: "Naval Fate 2.0", exit: true);
+            var width = 128;
+            var height = 128;
+            var random = new Random();
+
+            using (Image<Rgba32> image = new Image<Rgba32>(width, height))
+            {
+                for (var y = 0; y < height; y++)
+                {
+                    for (var x = 0; x < width; x++)
+                    {
+                        var a = (byte) random.Next(256);
+                        var r = (byte) random.Next(256);
+                        var g = (byte) random.Next(256);
+                        var b = (byte) random.Next(256);
+
+                        //image.GetRowSpan();
+                        image.GetRowSpan(x, y).Fill(new Rgba32(r, g, b, a));
+                        Console.Write($"{y}x{x}p{ImprovedNoise.Perlin(x, y, 1)}");
+                    }
+                    Console.WriteLine();
+                }
+                image.Save("image.png");
+            }
+        }
+    }
 }
