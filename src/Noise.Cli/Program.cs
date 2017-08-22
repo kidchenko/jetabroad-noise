@@ -29,28 +29,34 @@ namespace Noise.Cli
         private static void Main(string[] args)
         {
             //var arguments = new Docopt().Apply(usage, args, version: "Naval Fate 2.0", exit: true);
+
+            var inc = 0.005;
             var width = 128;
             var height = 128;
             var random = new Random();
+            var xinit = (double) random.Next();
+            var yinit = (double) random.Next();
 
             using (Image<Rgba32> image = new Image<Rgba32>(width, height))
             {
+                var yoff = yinit;
                 for (var y = 0; y < height; y++)
                 {
-                    for (var x = 0; x < width; x++)
+                    var xoff = xinit;
+					for (var x = 0; x < width; x++)
                     {
-                        var a = (byte) random.Next(256);
-                        var r = (byte) random.Next(256);
-                        var g = (byte) random.Next(256);
-                        var b = (byte) random.Next(256);
+                        var noise = (float) (ImprovedNoise.Perlin(xoff, yoff, 0) * 255);
+                        var r = noise;
+                        var g = noise;
+                        var b = noise;
+                        var a = 255;
 
-                        //image.GetRowSpan();
-                        image.GetRowSpan(x, y).Fill(new Rgba32(r, g, b, a));
-                        Console.Write($"{y}x{x}p{ImprovedNoise.Perlin(x, y, 1)}");
+                        image.GetPixelReference(x, y) = new Rgba32((byte)r, (byte)g, (byte)b, (byte)a);
+                        xoff += inc;
                     }
-                    Console.WriteLine();
+                    yoff += inc;
                 }
-                image.Save("image.png");
+                image.Save($"{DateTime.Now.Ticks}.png");
             }
         }
     }

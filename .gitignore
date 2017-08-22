@@ -2,6 +2,7 @@
 # Created by https://www.gitignore.io/api/csharp,intellij,visualstudio,visualstudiocode
 #macOS
 .DS_Store
+*.png
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
