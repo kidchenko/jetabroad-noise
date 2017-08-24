@@ -1,6 +1,6 @@
-namespace Noise.Cli
+namespace JetabroadNoise.Cli
 {
-    public class ImprovedNoise 
+    public class ImprovedPerlin 
     {
 
 		public static double OctavePerlin(double x, double y, double z, int octaves, double persistence) {
@@ -8,7 +8,7 @@ namespace Noise.Cli
 			double frequency = 1;
 			double amplitude = 1;
 			for(var i=0;i<octaves;i++) {
-				total += Perlin(x * frequency, y * frequency, z * frequency) * amplitude;
+                total += Noise(x * frequency, y * frequency, z * frequency) * amplitude;
 				
 				amplitude *= persistence;
 				frequency *= 2;
@@ -33,7 +33,7 @@ namespace Noise.Cli
 		
 		private static readonly int[] P; 													// Doubled permutation to avoid overflow
 		
-		static ImprovedNoise() 
+		static ImprovedPerlin() 
 		{
 			P = new int[512];
 			for(var x=0;x<512;x++) 
@@ -42,7 +42,7 @@ namespace Noise.Cli
 			}
 		}
 		
-		public static double Perlin(double x, double y, double z) {
+		public static double Noise(double x, double y, double z) {
 			var xi = (int)x & 255;								// Calculate the "unit cube" that the point asked will be located in
 			var yi = (int)y & 255;								// The left bound is ( |_x_|,|_y_|,|_z_| ) and the right bound is that
 			var zi = (int)z & 255;								// plus 1.  Next we calculate the location (from 0.0 to 1.0) in that cube.
