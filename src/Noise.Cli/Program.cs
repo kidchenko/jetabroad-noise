@@ -4,9 +4,9 @@ using ImageSharp;
 
 namespace JetabroadNoise.Cli
 {
-    class Program
+    public class Program
     {
-        private const string usage = @"Naval Fate.
+        public const string usage = @"Naval Fate.
 
     Usage:
       noise.cli.exe [--height=<h>] [--width=<w>] [--inc=<inc>] [--terrain] 
@@ -25,7 +25,7 @@ namespace JetabroadNoise.Cli
 
         public static void Main(string[] args)
         {
-            var arguments = new Docopt().Apply(usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: true);
+            var arguments = new Docopt().Apply(usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: false);
             var options = new ImageGeneratorOptions(arguments);
 
             var generator = new ImageGenerator(options);

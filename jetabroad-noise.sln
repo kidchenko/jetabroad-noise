@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetabroadNoise.Cli", "src\N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetabroadNoise.Cli.Test.Unit", "test\Noise.Cli.Test.Unit\JetabroadNoise.Cli.Test.Unit.csproj", "{D2324450-6A3A-411A-9601-DFCD89BC7B85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetabroadNoise.Cli.Test.Acceptance", "test\JetabroadNoise.Cli.Test.Acceptance\JetabroadNoise.Cli.Test.Acceptance.csproj", "{29AC3957-319E-4B53-A1DC-07ED6429CD62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{D2324450-6A3A-411A-9601-DFCD89BC7B85}.Release|x64.Build.0 = Release|Any CPU
 		{D2324450-6A3A-411A-9601-DFCD89BC7B85}.Release|x86.ActiveCfg = Release|Any CPU
 		{D2324450-6A3A-411A-9601-DFCD89BC7B85}.Release|x86.Build.0 = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|x64.Build.0 = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Debug|x86.Build.0 = Debug|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|x64.ActiveCfg = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|x64.Build.0 = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|x86.ActiveCfg = Release|Any CPU
+		{29AC3957-319E-4B53-A1DC-07ED6429CD62}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
