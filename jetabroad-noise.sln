@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetabroadNoise.Cli", "src\Noise.Cli\JetabroadNoise.Cli.csproj", "{0939726B-619A-450F-93B2-6BFD283BE044}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noise.Cli.Test.Unit", "test\Noise.Cli.Test.Unit\Noise.Cli.Test.Unit.csproj", "{D2324450-6A3A-411A-9601-DFCD89BC7B85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetabroadNoise.Cli.Test.Unit", "test\Noise.Cli.Test.Unit\JetabroadNoise.Cli.Test.Unit.csproj", "{D2324450-6A3A-411A-9601-DFCD89BC7B85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

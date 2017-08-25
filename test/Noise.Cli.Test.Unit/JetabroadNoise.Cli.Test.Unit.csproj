@@ -8,6 +8,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Noise.Cli\Noise.Cli.csproj" />
+    <ProjectReference Include="..\..\src\Noise.Cli\JetabroadNoise.Cli.csproj" />
   </ItemGroup>
 </Project>

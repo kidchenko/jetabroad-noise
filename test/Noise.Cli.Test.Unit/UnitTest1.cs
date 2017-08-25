@@ -1,15 +1,15 @@
 using System;
 using Xunit;
 
-namespace Noise.Cli.Test.Unit
+namespace JetabroadNoise.Cli.Test.Unit
 {
     public class UnitTest1
     {
         [Fact]
         public void Test1()
         {
-            //var result = ImprovedPerlin.Perlin(1, 1, 1);
-            //Console.WriteLine(result);
+            var result = ImprovedPerlin.Noise(1, 1, 1);
+            Console.WriteLine(result);
         }
     }
 }

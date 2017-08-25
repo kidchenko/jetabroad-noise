@@ -41,6 +41,10 @@ namespace JetabroadNoise.Cli
 				P[x] = Permutation[x%256];
 			}
 		}
+
+        public static double Noise(double x, double y) {
+            return Noise(x, y, 0d);
+        }
 		
 		public static double Noise(double x, double y, double z) {
 			var xi = (int)x & 255;								// Calculate the "unit cube" that the point asked will be located in
