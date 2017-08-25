@@ -3,7 +3,7 @@ using ImageSharp;
 
 namespace JetabroadNoise.Cli
 {
-    public static class Biome
+    public static class MotherNature
     {
         public static int snow;
         public static int medium;
@@ -13,43 +13,55 @@ namespace JetabroadNoise.Cli
         public static int beach;
         public static int grass;
 
-        public static Rgba32 OCEAN = new Rgba32(4, 74, 175, 255); 
+		public static Rgba32 OCEAN = new Rgba32(4, 74, 175, 255);
 
-        public static Rgba32 WATER = new Rgba32(93, 128, 253, 255);
+		public static Rgba32 WATER = new Rgba32(93, 128, 253, 255);
 
 		public static Rgba32 SAND = new Rgba32(228, 229, 172, 255);
-  
-        public static Rgba32 GRASS = new Rgba32(136, 170, 85, 255);
 
-        public static Rgba32 FOREST = new Rgba32(51, 119, 85, 255);
+		public static Rgba32 GRASS = new Rgba32(136, 170, 85, 255);
+
+		public static Rgba32 FOREST = new Rgba32(51, 119, 85, 255);
 
 		public static Rgba32 MOUNTAIN = new Rgba32(85, 85, 85, 255);
 
-        public static Rgba32 SNOW = new Rgba32(221, 221, 221, 255);
+		public static Rgba32 SNOW = new Rgba32(221, 221, 221, 255);
+
+        private const double OCEAN_LEVEL = 0.07;
+
+        private const double WATER_LEVEL = 0.11;
+
+        private const double SAND_LEVEL = 0.15;
+
+		private const double ICE_LEVEL = 0.7;
+
+		private const double MOUNTAIN_LEVEL = 0.5;
+
+		private const double FOREST_LEVEL = 0.3;
 
         public static Rgba32 Create(double e, double m)
         {
-			if (e < 0.07)
+            if (e < OCEAN_LEVEL)
 			{
 				Console.Write("o");
 				ocean++;
 				return OCEAN;
 			}
-			if (e < 0.12)
+            if (e < WATER_LEVEL)
 			{
 				Console.Write("w");
 				water++;
 				return WATER;
 			}
 
-			if (e < 0.15)
+            if (e < SAND_LEVEL)
 			{
 				Console.Write("b");
 				beach++;
 				return SAND;
 			}
 
-			if (e > 0.7)
+            if (e > ICE_LEVEL)
 			{
 				Console.Write("s");
 				snow++;
@@ -59,7 +71,7 @@ namespace JetabroadNoise.Cli
 				return SNOW;
 			}
 
-			if (e > 0.5)
+			if (e > MOUNTAIN_LEVEL)
 			{
 				Console.Write("m");
 				medium++;
@@ -68,7 +80,7 @@ namespace JetabroadNoise.Cli
 				return MOUNTAIN;
 			}
 
-			if (e > 0.3)
+            if (e > FOREST_LEVEL)
 			{
 				Console.Write("f");
 				forest++;
@@ -82,7 +94,7 @@ namespace JetabroadNoise.Cli
 			//if (m < 0.16) return new Rgba32(230, 230, 70, 255);
 			//if (m < 0.33) return new Rgba32(136, 170, 85, 255);
 			//if (m < 0.66) return new Rgba32(85, 153, 68, 255);
-			return Biome.GRASS;
+			return MotherNature.GRASS;
             
         }
 	}

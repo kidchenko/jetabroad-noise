@@ -7,28 +7,28 @@ namespace JetabroadNoise.Cli
     {
         private ImageGeneratorOptions _options;
         private Image<Rgba32> _image;
+        private Random _seed = new Random();
 
         public ImageGenerator(ImageGeneratorOptions options)
         {
             _options = options;
         }
 
-        private Image<Rgba32> GenerateImage(int width, int height, double inc, bool isTerrain)
+		public Image<Rgba32> Generate()
+		{
+			if (_options.IsTerrain)
+			{
+				return CreateTerrain(_options.Width, _options.Height, _options.Increment);
+
+			}
+			return CreateImage(_options.Width, _options.Height, _options.Increment);
+		}
+
+        private Image<Rgba32> CreateImage(int width, int height, double inc)
         {
-            var random = new Random();
-            var xinit = (double)random.Next();
-            var yinit = (double)random.Next();
+			var xinit = RandomDouble();
+			var yinit = RandomDouble();
 
-            if (isTerrain)
-            {
-                return CreateTerrain(width, height, inc, xinit, yinit);
-
-            }
-            return CreateImage(width, height, inc, xinit, yinit);
-        }
-
-        private Image<Rgba32> CreateImage(int width, int height, double inc, double xinit, double yinit)
-        {
             using (_image = new Image<Rgba32>(width, height))
             {
                 var yoff = yinit;
@@ -50,32 +50,35 @@ namespace JetabroadNoise.Cli
             return new Image<Rgba32>(_image);
         }
 
-        public Image<Rgba32> Generate()
+
+        private double RandomDouble()
         {
-            return GenerateImage(_options.Width, _options.Height, _options.Increment, _options.IsTerrain);
+            return _seed.NextDouble() * _seed.Next();
         }
 
-        private Image<Rgba32> CreateTerrain(int width, int height, double inc, double xinit, double yinit)
+
+        private Image<Rgba32> CreateTerrain(int width, int height, double inc)
         {
-            var random = new Random();
-            var xinit2 = (double)random.Next();
-            var yinit2 = (double)random.Next();
+            var xinit1 = RandomDouble();
+            var yinit1 = RandomDouble();
+            var xinit2 = RandomDouble();
+            var yinit2 = RandomDouble();
+			var yoff = yinit1;
+			var yoff2 = yinit2;
 
             using (_image = new Image<Rgba32>(width, height))
             {
-                var yoff = yinit;
-                var yoff2 = yinit2;
                 for (var y = 0; y < height; y++)
                 {
-                    var xoff = xinit;
+                    var xoff1 = xinit1;
                     var xoff2 = xinit2;
                     for (var x = 0; x < width; x++)
                     {
-                        var e = (1.00 * ImprovedPerlin.Noise(xoff, yoff)
-                                + 0.50 * ImprovedPerlin.Noise(xoff, yoff)
-                                + 0.25 * ImprovedPerlin.Noise(xoff, yoff)
-                                + 0.13 * ImprovedPerlin.Noise(xoff, yoff)
-                                 + 0.06 * ImprovedPerlin.Noise(xoff, yoff));
+                        var e = (1.00 * ImprovedPerlin.Noise(xoff1, yoff)
+                                + 0.50 * ImprovedPerlin.Noise(xoff1, yoff)
+                                + 0.25 * ImprovedPerlin.Noise(xoff1, yoff)
+                                + 0.13 * ImprovedPerlin.Noise(xoff1, yoff)
+                                + 0.06 * ImprovedPerlin.Noise(xoff1, yoff));
 
                         e /= (1.00 + 0.50 + 0.25 + 0.13 + 0.06);
                         e = Math.Pow(e, 2.2);
@@ -88,8 +91,8 @@ namespace JetabroadNoise.Cli
                                + 0.50 * ImprovedPerlin.Noise(xoff2, yoff2));
                         m /= (1.00 + 0.75 + 0.33 + 0.33 + 0.33 + 0.50);
 
-                        _image.GetPixelReference(x, y) = Biome.Create(e, m);
-                        xoff += inc;
+                        _image.GetPixelReference(x, y) = MotherNature.Create(e, m);
+                        xoff1 += inc;
                         xoff2 += inc;
                     }
                     Console.WriteLine("\n");
@@ -97,15 +100,15 @@ namespace JetabroadNoise.Cli
                     yoff2 += inc;
                 }
 
+				Console.WriteLine($"ocean: {MotherNature.ocean}");
+				Console.WriteLine($"water: {MotherNature.water}");
+				Console.WriteLine($"beach {MotherNature.beach}");
+				Console.WriteLine($"grass {MotherNature.grass}");
+				Console.WriteLine($"forest {MotherNature.forest}");
+				Console.WriteLine($"medium {MotherNature.medium}");
+				Console.WriteLine($"snow {MotherNature.snow}");
+				return new Image<Rgba32>(_image);
             }
-            Console.WriteLine($"ocean: {Biome.ocean}");
-            Console.WriteLine($"water: {Biome.water}");
-            Console.WriteLine($"beach {Biome.beach}");
-            Console.WriteLine($"grass {Biome.grass}");
-            Console.WriteLine($"forest {Biome.forest}");
-            Console.WriteLine($"medium {Biome.medium}");
-            Console.WriteLine($"snow {Biome.snow}");
-            return new Image<Rgba32>(_image);
         }
     }
 }
