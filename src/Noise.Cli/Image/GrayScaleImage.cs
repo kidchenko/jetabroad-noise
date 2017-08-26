@@ -14,8 +14,8 @@ namespace JetabroadNoise.Cli
 
         public override Image<Rgba32> CreateImage()
         {
-			var xinit = _generator.RandomDouble();
-			var yinit = _generator.RandomDouble();
+			var xinit = this.GenerateSeedValue();
+			var yinit = this.GenerateSeedValue();
 			var width = _generator._options.Width;
 			var height = _generator._options.Height;
 			var inc = _generator._options.Increment;

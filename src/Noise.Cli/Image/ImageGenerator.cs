@@ -7,14 +7,13 @@ namespace JetabroadNoise.Cli
     {
         public ImageOptions _options;
         private PerlinImage _image;
-        private Random _seed = new Random();
 
         public ImageGenerator(ImageOptions options)
         {
             _options = options;
             if (options.IsTerrain) 
             {
-                _image = new TerrainImage(this);
+                _image = new TerrainImage(options);
             }
             else
             {
@@ -26,10 +25,5 @@ namespace JetabroadNoise.Cli
 		{
             return _image.CreateImage();
 		}
-
-        public double RandomDouble()
-        {
-            return _seed.NextDouble() * _seed.Next();
-        }
     }
 }
