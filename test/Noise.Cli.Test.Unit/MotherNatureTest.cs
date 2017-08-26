@@ -1,6 +1,4 @@
-using System;
 using Xunit;
-using JetabroadNoise.Cli;
 using FluentAssertions;
 
 namespace JetabroadNoise.Cli.Test.Unit
@@ -32,7 +30,7 @@ namespace JetabroadNoise.Cli.Test.Unit
 		public void ShouldCreateIce()
 		{
 			var biome = MotherNature.Create(0.77, 0);
-			biome.Should().Be(MotherNature.ICE);
+            biome.Should().Be(MotherNature.SNOW);
 		}
 
 		[Fact]
@@ -46,7 +44,7 @@ namespace JetabroadNoise.Cli.Test.Unit
 		public void ShouldCreateForest()
 		{
 			var biome = MotherNature.Create(0.44, 0);
-			biome.Should().Be(MotherNature.MOUNTAIN);
+            biome.Should().Be(MotherNature.FOREST);
 		}
 
 		[Fact]

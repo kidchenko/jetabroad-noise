@@ -5,11 +5,11 @@ namespace JetabroadNoise.Cli
 {
     public class ImageGenerator
     {
-        public ImageGeneratorOptions _options;
-        private IPerlinImage _image;
+        public ImageOptions _options;
+        private PerlinImage _image;
         private Random _seed = new Random();
 
-        public ImageGenerator(ImageGeneratorOptions options)
+        public ImageGenerator(ImageOptions options)
         {
             _options = options;
             if (options.IsTerrain) 

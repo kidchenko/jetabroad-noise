@@ -6,7 +6,7 @@ namespace JetabroadNoise.Cli
 {
     public class Program
     {
-        public const string usage = @"Naval Fate.
+        public const string Usage = @"Naval Fate.
 
     Usage:
       noise.cli.exe [--height=<h>] [--width=<w>] [--inc=<inc>] [--terrain] 
@@ -25,8 +25,8 @@ namespace JetabroadNoise.Cli
 
         public static void Main(string[] args)
         {
-            var arguments = new Docopt().Apply(usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: false);
-            var options = new ImageGeneratorOptions(arguments);
+            var arguments = new Docopt().Apply(Usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: false);
+            var options = new ImageOptions(arguments);
 
             var generator = new ImageGenerator(options);
             var image = generator.Generate();
