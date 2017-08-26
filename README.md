@@ -12,3 +12,11 @@ Implementations of this algorithm are freely available, so we will be judging th
 - Is it well unit-tested?
 - Bonus (optional): add an option to output a Perlin noise terrain map (see perlin-terrain.jpg). It doesn't have to look like this sample, you can use your own artistic judgement.
 
+## Identified Requirements;
+
+- Read user input to know what type of image and other configs;
+- Generate a random Image using Improved Perlin Noise;
+    - Default: image is grayscale;
+    - Terrain: image is colorful;
+- Save image;
+- Display user feedback to output;
