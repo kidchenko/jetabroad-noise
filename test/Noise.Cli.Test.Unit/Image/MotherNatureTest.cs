@@ -1,7 +1,7 @@
-using Xunit;
 using FluentAssertions;
+using Xunit;
 
-namespace JetabroadNoise.Cli.Test.Unit
+namespace JetabroadNoise.Cli.Test.Unit.Image
 {
     public class MotherNatureTest
     {

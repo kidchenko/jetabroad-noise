@@ -4,7 +4,7 @@ using FluentAssertions;
 using JetabroadNoise.Cli.Options;
 using Xunit;
 
-namespace JetabroadNoise.Cli.Test.Unit
+namespace JetabroadNoise.Cli.Test.Unit.Image
 {
     public class ImageOptionsTest
     {
