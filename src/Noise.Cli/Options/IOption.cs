@@ -1,6 +1,6 @@
 ﻿namespace JetabroadNoise.Cli.Options
 {
-    public interface IOptions
+    public interface IOption
     {
         int Width { get; }
 

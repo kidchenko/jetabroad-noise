@@ -27,7 +27,7 @@ namespace JetabroadNoise.Cli
         public static void Main(string[] args)
         {
             var arguments = new Docopt().Apply(Usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: true);
-            var options = new DocoptOptions(arguments);
+            var options = new DocoptOption(arguments);
 
             var generator = new ImageGenerator(options);
             var image = generator.Generate();

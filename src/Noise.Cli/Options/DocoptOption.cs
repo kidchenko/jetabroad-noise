@@ -4,14 +4,14 @@ using JetabroadNoise.Cli.Extensions;
 
 namespace JetabroadNoise.Cli.Options
 {
-    public class DocoptOptions : IOptions
+    public class DocoptOption : IOption
     {
         public int Width { get; }
         public int Height { get; }
         public double Increment { get; }
         public bool IsTerrain { get; }
         
-        public DocoptOptions(IDictionary<string, ValueObject> arguments)
+        public DocoptOption(IDictionary<string, ValueObject> arguments)
         {
 			Width = arguments["--width"].AsInt;
 			Height = arguments["--height"].AsInt;

@@ -7,15 +7,15 @@ namespace JetabroadNoise.Cli.Image
     {
         public readonly RandomImage Image;
         
-        public ImageGenerator(IOptions options)
+        public ImageGenerator(IOption option)
         {
-            if (options.IsTerrain) 
+            if (option.IsTerrain) 
             {
-                Image = new TerrainImage(options.Width, options.Height, options.Increment);
+                Image = new TerrainImage(option.Width, option.Height, option.Increment);
             }
             else
             {
-                Image = new GrayScaleImage(options.Width, options.Height, options.Increment);
+                Image = new GrayScaleImage(option.Width, option.Height, option.Increment);
             }
         }
 
