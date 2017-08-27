@@ -1,7 +1,7 @@
 ﻿using System;
 using ImageSharp;
 
-namespace JetabroadNoise.Cli
+namespace JetabroadNoise.Cli.Pixel
 {
     public class GrayScale
     {
@@ -11,9 +11,9 @@ namespace JetabroadNoise.Cli
 			var r = color;
 			var g = color;
 			var b = color;
-			var a = 255;
+			const byte alpha = 255;
 			Console.Write($"r: {r}, g: {g}, b:xoffa: {n}");
-			return new Rgba32((byte)r, (byte)g, (byte)b, (byte)a);
+			return new Rgba32((byte)r, (byte)g, (byte)b, alpha);
 		}
     }
 }

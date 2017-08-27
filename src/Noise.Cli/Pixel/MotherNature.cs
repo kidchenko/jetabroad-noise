@@ -1,17 +1,29 @@
 ﻿using System;
 using ImageSharp;
 
-namespace JetabroadNoise.Cli
+namespace JetabroadNoise.Cli.Pixel
 {
-    public static class MotherNature
+    public class MotherNature
     {
-        public static int snow;
-        public static int medium;
-        public static int forest;
-        public static int ocean;
-        public static int water;
-        public static int beach;
-        public static int grass;
+	    private const double OceanLevel = 0.07;
+
+	    private const double WaterLevel = 0.11;
+
+	    private const double SandLevel = 0.15;
+
+	    private const double IceLevel = 0.7;
+
+	    private const double MountainLevel = 0.5;
+
+	    private const double ForestLevel = 0.3;
+	    
+        public int Snow 	{ get; set; }
+        public int Medium 	{ get; set; }
+        public int Forest 	{ get; set; }
+        public int Ocean 	{ get; set; }
+        public int Water 	{ get; set; }
+        public int Beach 	{ get; set; }
+        public int Grass 	{ get; set; }
 
 		public static Rgba32 OCEAN = new Rgba32(4, 74, 175, 255);
 
@@ -27,74 +39,62 @@ namespace JetabroadNoise.Cli
 
 		public static Rgba32 SNOW = new Rgba32(221, 221, 221, 255);
 
-        private const double OCEAN_LEVEL = 0.07;
-
-        private const double WATER_LEVEL = 0.11;
-
-        private const double SAND_LEVEL = 0.15;
-
-		private const double ICE_LEVEL = 0.7;
-
-		private const double MOUNTAIN_LEVEL = 0.5;
-
-		private const double FOREST_LEVEL = 0.3;
-
-        public static Rgba32 Create(double e, double m)
+        public Rgba32 Create(double e, double m)
         {
-            if (e < OCEAN_LEVEL)
+            if (e < OceanLevel)
 			{
 				Console.Write("o");
-				ocean++;
+				Ocean++;
 				return OCEAN;
 			}
-            if (e < WATER_LEVEL)
+            if (e < WaterLevel)
 			{
 				Console.Write("w");
-				water++;
+				Water++;
 				return WATER;
 			}
 
-            if (e < SAND_LEVEL)
+            if (e < SandLevel)
 			{
 				Console.Write("b");
-				beach++;
+				Beach++;
 				return SAND;
 			}
 
-            if (e > ICE_LEVEL)
+            if (e > IceLevel)
 			{
 				Console.Write("s");
-				snow++;
+				Snow++;
 				//if (m < 0.1) return new Rgba32(85, 85, 85, 255);
 				//            if (m < 0.2) return new Rgba32(136, 136, 136, 255);
 				//if (m < 0.5) return new Rgba32(187, 187, 170, 255);
 				return SNOW;
 			}
 
-			if (e > MOUNTAIN_LEVEL)
+			if (e > MountainLevel)
 			{
 				Console.Write("m");
-				medium++;
+				Medium++;
 				//            if (m < 0.33) return new Rgba32(201, 210, 155, 255);
 				//if (m < 0.66) return new Rgba32(136, 153, 119, 255);
 				return MOUNTAIN;
 			}
 
-            if (e > FOREST_LEVEL)
+            if (e > ForestLevel)
 			{
 				Console.Write("f");
-				forest++;
+				Forest++;
 				//if (m < 0.16) return new Rgba32(201, 210, 155, 255);
 				//if (m < 0.50) return new Rgba32(136, 170, 85, 255); ;
 				//if (m < 0.83) return new Rgba32(103, 148, 89, 1);
 				return FOREST;
 			}
 			Console.Write("g");
-			grass++;
+			Grass++;
 			//if (m < 0.16) return new Rgba32(230, 230, 70, 255);
 			//if (m < 0.33) return new Rgba32(136, 170, 85, 255);
 			//if (m < 0.66) return new Rgba32(85, 153, 68, 255);
-			return MotherNature.GRASS;
+			return GRASS;
             
         }
 	}

@@ -5,7 +5,7 @@ namespace JetabroadNoise.Cli.Image
 {
     public class ImageGenerator
     {
-        public readonly RandomImage Image;
+        public RandomImage Image { get; }
         
         public ImageGenerator(IOption option)
         {
