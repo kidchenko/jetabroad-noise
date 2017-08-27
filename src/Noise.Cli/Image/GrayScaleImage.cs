@@ -1,44 +1,72 @@
-﻿using System;
-using ImageSharp;
+﻿using ImageSharp;
+using JetabroadNoise.Cli.Options;
 
-namespace JetabroadNoise.Cli
+namespace JetabroadNoise.Cli.Image
 {
     public class GrayScaleImage : PerlinImage
     {
-        private ImageGenerator _generator;
+	    private readonly double _xinit;
+	    private readonly double _yinit;
+	    private readonly int _width;
+	    private readonly int _height;
+	    private readonly double _inc;
+	    private double _yoff;
+	    private double _xoff;
+	    private Image<Rgba32> _image;
 
-        public GrayScaleImage(ImageGenerator generator)
+        public GrayScaleImage(IOptions options)
         {
-            _generator = generator;
+	        _xinit = GenerateSeedValue();
+	        _yinit = GenerateSeedValue();
+	        _width = options.Width;
+	        _height = options.Height;
+	        _inc = options.Increment;
         }
 
         public override Image<Rgba32> CreateImage()
         {
-			var xinit = this.GenerateSeedValue();
-			var yinit = this.GenerateSeedValue();
-			var width = _generator._options.Width;
-			var height = _generator._options.Height;
-			var inc = _generator._options.Increment;
-
-			using (var _image = new Image<Rgba32>(width, height))
+	        CreateYOff();
+			using (_image = new Image<Rgba32>(_width, _height))
 			{
-				var yoff = yinit;
-				for (var y = 0; y < height; y++)
+				for (var y = 0; y < _height; y++)
 				{
-					var xoff = xinit;
-					for (var x = 0; x < width; x++)
+					CreateXOff();
+					for (var x = 0; x < _width; x++)
 					{
-						var noise = ImprovedPerlin.Noise(xoff, yoff);
-
-						_image.GetPixelReference(x, y) = GrayScale.Create(noise);
-						xoff += inc;
+						FillImage(x, y);
 					}
-					Console.WriteLine("\n");
-					Console.WriteLine("\n");
-					yoff += inc;
+					IncrementYOff();
 				}
 				return new Image<Rgba32>(_image);
 			}
 		}
+
+	    private void FillImage(int x, int y)
+	    {
+		    var noise = ImprovedPerlin.Noise(_xoff, _yoff);
+
+		    _image.GetPixelReference(x, y) = GrayScale.Create(noise);
+		    IncrementXOff();
+	    }
+	    
+	    private void CreateXOff()
+	    {
+		    _xoff = _xinit;
+	    }
+
+	    private void CreateYOff()
+	    {
+		    _yoff = _yinit;
+	    }
+	    
+	    private void IncrementXOff()
+	    {
+		    _xoff += _inc;
+	    }
+
+	    private void IncrementYOff()
+	    {
+		    _yoff += _inc;
+	    }
     }
 }

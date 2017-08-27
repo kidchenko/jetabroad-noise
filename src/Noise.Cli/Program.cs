@@ -1,6 +1,7 @@
 ﻿using System;
 using DocoptNet;
-using ImageSharp;
+using JetabroadNoise.Cli.Image;
+using JetabroadNoise.Cli.Options;
 
 namespace JetabroadNoise.Cli
 {
@@ -25,8 +26,8 @@ namespace JetabroadNoise.Cli
 
         public static void Main(string[] args)
         {
-            var arguments = new Docopt().Apply(Usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: false);
-            var options = new ImageOptions(arguments);
+            var arguments = new Docopt().Apply(Usage, args, version: $"{nameof(JetabroadNoise)} 0.0.1", exit: true);
+            var options = new DocoptOptions(arguments);
 
             var generator = new ImageGenerator(options);
             var image = generator.Generate();

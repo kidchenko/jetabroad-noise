@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DocoptNet;
 using FluentAssertions;
+using JetabroadNoise.Cli.Options;
 using Xunit;
 
 namespace JetabroadNoise.Cli.Test.Unit
@@ -11,7 +12,7 @@ namespace JetabroadNoise.Cli.Test.Unit
         public void ShouldParseHeight()
         {
             var args = CreateDocoptArgs("--height=320");
-            var option = new ImageOptions(args);
+            var option = new DocoptOptions(args);
             option.Height.Should().Be(320);
         }
 
@@ -19,7 +20,7 @@ namespace JetabroadNoise.Cli.Test.Unit
 		public void ShouldParseWidth()
 		{
             var args = CreateDocoptArgs("--width=320");
-			var option = new ImageOptions(args);
+			var option = new DocoptOptions(args);
             option.Width.Should().Be(320);
 		}
 
@@ -27,7 +28,7 @@ namespace JetabroadNoise.Cli.Test.Unit
 		public void ShouldParseTerrain()
 		{
             var args = CreateDocoptArgs("--terrain");
-			var option = new ImageOptions(args);
+			var option = new DocoptOptions(args);
             option.IsTerrain.Should().BeTrue();
 		}
 
@@ -35,7 +36,7 @@ namespace JetabroadNoise.Cli.Test.Unit
 		public void ShouldParseIncrement()
 		{
             var args = CreateDocoptArgs("--inc=0.01");
-			var option = new ImageOptions(args);
+			var option = new DocoptOptions(args);
             option.Increment.Should().Be(0.01d);
 		}
 
@@ -43,7 +44,7 @@ namespace JetabroadNoise.Cli.Test.Unit
         public void ShouldParseDefaultValues()
         {
             var args = CreateDocoptArgs("");
-			var option = new ImageOptions(args);
+			var option = new DocoptOptions(args);
             option.Height.Should().Be(128);
             option.Width.Should().Be(128);
 			option.Increment.Should().Be(0.05d);

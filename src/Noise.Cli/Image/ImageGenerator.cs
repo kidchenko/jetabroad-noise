@@ -1,23 +1,23 @@
-﻿using System;
-using ImageSharp;
+﻿using ImageSharp;
+using JetabroadNoise.Cli.Options;
 
-namespace JetabroadNoise.Cli
+namespace JetabroadNoise.Cli.Image
 {
     public class ImageGenerator
     {
-        public ImageOptions _options;
-        private PerlinImage _image;
+        public IOptions Options;
+        private readonly PerlinImage _image;
 
-        public ImageGenerator(ImageOptions options)
+        public ImageGenerator(IOptions options)
         {
-            _options = options;
+            Options = options;
             if (options.IsTerrain) 
             {
                 _image = new TerrainImage(options);
             }
             else
             {
-                _image = new GrayScaleImage(this);
+                _image = new GrayScaleImage(options);
             }
         }
 
