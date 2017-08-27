@@ -6,18 +6,19 @@ namespace JetabroadNoise.Cli.Image
     public class ImageGenerator
     {
         public IOptions Options;
-        private readonly PerlinImage _image;
+        private readonly RandomImage _image;
+        
 
         public ImageGenerator(IOptions options)
         {
             Options = options;
             if (options.IsTerrain) 
             {
-                _image = new TerrainImage(options);
+                _image = new TerrainImage(options.Width, options.Height, options.Increment);
             }
             else
             {
-                _image = new GrayScaleImage(options);
+                _image = new GrayScaleImage(options.Width, options.Height, options.Increment);
             }
         }
 

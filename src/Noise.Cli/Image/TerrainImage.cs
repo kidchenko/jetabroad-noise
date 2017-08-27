@@ -1,22 +1,15 @@
 ﻿using System;
 using ImageSharp;
-using JetabroadNoise.Cli.Options;
 
 namespace JetabroadNoise.Cli.Image
 {
-    public class TerrainImage : PerlinImage
+    public class TerrainImage : RandomImage
     {
         private double _yoff;
         private double _yoff2;
         private double _xoff;
         private double _xoff2;
         
-        private readonly int _width;
-        private readonly int _height;        
-        
-        private readonly double _inc;
-
-
         private readonly double _xinit;
 
         private readonly double _xinit2;
@@ -25,13 +18,8 @@ namespace JetabroadNoise.Cli.Image
 
         private readonly double _yinit2;
 
-        private Image<Rgba32> _image;
-
-        public TerrainImage(IOptions options)
+        public TerrainImage(int width, int height, double increment) : base(width, height, increment)
         {
-            _height = options.Height;
-            _width = options.Width;
-            _inc = options.Increment;
             _xinit = GenerateSeedValue();
             _yinit = GenerateSeedValue();
             _xinit2 = GenerateSeedValue();
@@ -42,18 +30,18 @@ namespace JetabroadNoise.Cli.Image
         {
             CreateYOff();
 
-            using (_image = new Image<Rgba32>(_width, _height))
+            using (BaseImage = new Image<Rgba32>(Width, Height))
             {
-                for (var y = 0; y < _height; y++)
+                for (var y = 0; y < Height; y++)
                 {
                     CreateXOff();
-                    for (var x = 0; x < _width; x++)
+                    for (var x = 0; x < Width; x++)
                     {
                         FillImage(x, y);
                     }
                     IncrementYOff();
                 }
-                return new Image<Rgba32>(_image);
+                return new Image<Rgba32>(BaseImage);
             }
         }
 
@@ -62,7 +50,7 @@ namespace JetabroadNoise.Cli.Image
             var e = GetPerlinNumber();
             var m = GetMNumber();
 
-            _image.GetPixelReference(x, y) = MotherNature.Create(e, m);
+            BaseImage.GetPixelReference(x, y) = MotherNature.Create(e, m);
             IncrementXOff();
         }
             
@@ -106,14 +94,14 @@ namespace JetabroadNoise.Cli.Image
 
         private void IncrementXOff()
         {
-            _xoff += _inc;
-            _xoff2 += _inc;
+            _xoff += Increment;
+            _xoff2 += Increment;
         }
 
         private void IncrementYOff()
         {
-            _yoff += _inc;
-            _yoff2 += _inc;
+            _yoff += Increment;
+            _yoff2 += Increment;
         }
     }
 }
