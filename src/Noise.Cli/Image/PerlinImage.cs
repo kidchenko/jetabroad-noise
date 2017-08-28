@@ -1,13 +1,14 @@
 ﻿using System;
 using ImageSharp;
+using JetabroadNoise.Cli.Pixel;
 
 namespace JetabroadNoise.Cli.Image
 {
-    public abstract class RandomImage
+    public abstract class PerlinImage
     {
         protected int Width { get; }
-        
         protected int Height { get; }
+        protected abstract IPixelCreator PixelCreator { get; set; }
         
         protected double Increment { get; }
         
@@ -21,7 +22,7 @@ namespace JetabroadNoise.Cli.Image
 
         private readonly Random _seed = new Random();
 
-        protected RandomImage(int width, int height, double increment)
+        protected PerlinImage(int width, int height, double increment)
         {
             Width = width;
             Height = height;
