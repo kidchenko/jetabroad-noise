@@ -4,9 +4,9 @@ using FluentAssertions;
 using JetabroadNoise.Cli.Options;
 using Xunit;
 
-namespace JetabroadNoise.Cli.Test.Unit.Image
+namespace JetabroadNoise.Cli.Test.Unit.Options
 {
-    public class ImageOptionsTest
+    public class DocoptOptionsTest
     {
         [Fact]
         public void ShouldParseHeight()

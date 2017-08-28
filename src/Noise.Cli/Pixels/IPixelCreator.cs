@@ -1,6 +1,6 @@
 ﻿using ImageSharp;
 
-namespace JetabroadNoise.Cli.Pixel
+namespace JetabroadNoise.Cli.Pixels
 {
     public interface IPixelCreator
     {

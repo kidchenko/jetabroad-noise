@@ -1,12 +1,19 @@
 ﻿using ImageSharp;
 using JetabroadNoise.Cli.Options;
 
-namespace JetabroadNoise.Cli.Image
+namespace JetabroadNoise.Cli.Images
 {
+    /// <summary>
+    /// A class to generate image.
+    /// </summary>
     public class ImageGenerator
     {
         public PerlinImage Image { get; }
         
+        /// <summary>
+        /// Create a generator based in your options. 
+        /// </summary>
+        /// <param name="option"></param>
         public ImageGenerator(IOption option)
         {
             if (option.IsTerrain) 

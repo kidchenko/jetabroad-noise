@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using ImageSharp;
-using JetabroadNoise.Cli.Pixel;
+using JetabroadNoise.Cli.Pixels;
 using Xunit;
 
 namespace JetabroadNoise.Cli.Test.Acceptance

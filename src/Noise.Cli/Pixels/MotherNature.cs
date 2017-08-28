@@ -1,7 +1,7 @@
 ﻿using System;
 using ImageSharp;
 
-namespace JetabroadNoise.Cli.Pixel
+namespace JetabroadNoise.Cli.Pixels
 {
     public class MotherNature : IPixelCreator
     {
@@ -17,8 +17,6 @@ namespace JetabroadNoise.Cli.Pixel
 
 	    private const double ForestLevel = 0.3;
 	    
-	    // ReSharper disable InconsistentNaming
-	    
 		public static Rgba32 OCEAN = new Rgba32(4, 74, 175, 255);
 
 		public static Rgba32 WATER = new Rgba32(93, 128, 253, 255);
@@ -33,40 +31,39 @@ namespace JetabroadNoise.Cli.Pixel
 
 		public static Rgba32 SNOW = new Rgba32(221, 221, 221, 255);
 	    
-	    // ReSharper enable InconsistentNaming
 
-        public Rgba32 Create(double e)
+        public Rgba32 Create(double elevation)
         {
-            if (e < OceanLevel)
+            if (elevation < OceanLevel)
 			{
 				Console.Write("o");
 				return OCEAN;
 			}
-            if (e < WaterLevel)
+            if (elevation < WaterLevel)
 			{
 				Console.Write("w");
 				return WATER;
 			}
 
-            if (e < SandLevel)
+            if (elevation < SandLevel)
 			{
 				Console.Write("b");
 				return SAND;
 			}
 
-            if (e > IceLevel)
+            if (elevation > IceLevel)
 			{
 				Console.Write("s");
 				return SNOW;
 			}
 
-			if (e > MountainLevel)
+			if (elevation > MountainLevel)
 			{
 				Console.Write("m");
 				return MOUNTAIN;
 			}
 
-            if (e > ForestLevel)
+            if (elevation > ForestLevel)
 			{
 				Console.Write("f");
 				return FOREST;

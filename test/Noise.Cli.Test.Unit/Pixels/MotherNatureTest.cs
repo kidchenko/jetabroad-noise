@@ -1,8 +1,8 @@
 using FluentAssertions;
-using JetabroadNoise.Cli.Pixel;
+using JetabroadNoise.Cli.Pixels;
 using Xunit;
 
-namespace JetabroadNoise.Cli.Test.Unit.Image
+namespace JetabroadNoise.Cli.Test.Unit.Pixel
 {
     public class MotherNatureTest
     {

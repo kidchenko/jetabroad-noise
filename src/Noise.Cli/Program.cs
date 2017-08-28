@@ -1,6 +1,6 @@
 ﻿using System;
 using DocoptNet;
-using JetabroadNoise.Cli.Image;
+using JetabroadNoise.Cli.Images;
 using JetabroadNoise.Cli.Options;
 
 namespace JetabroadNoise.Cli
