@@ -74,7 +74,7 @@ namespace JetabroadNoise.Cli.Test.Acceptance
 			var images = LookupImages();
 			ImageExist(images).Should().BeTrue();
 			
-			var loadedImage = ImageSharp.Image.Load<Rgba32>(images.First());
+			var loadedImage = Image.Load<Rgba32>(images.First());
 			loadedImage.Height.Should().Be(height);
 			loadedImage.Height.Should().Be(width);
 		}
@@ -108,7 +108,7 @@ namespace JetabroadNoise.Cli.Test.Acceptance
 
 	    private Image<Rgba32> LoadImage(string name)
 	    {
-		    return ImageSharp.Image.Load<Rgba32>(name);
+		    return Image.Load<Rgba32>(name);
 	    }
 
 	    public void Dispose()

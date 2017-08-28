@@ -3,6 +3,9 @@ using ImageSharp;
 
 namespace JetabroadNoise.Cli.Pixels
 {
+	/// <summary>
+	/// Pixel creator to create nature
+	/// </summary>
     public class MotherNature : IPixelCreator
     {
 	    private const double OceanLevel = 0.07;
@@ -36,39 +39,32 @@ namespace JetabroadNoise.Cli.Pixels
         {
             if (elevation < OceanLevel)
 			{
-				Console.Write("o");
 				return OCEAN;
 			}
             if (elevation < WaterLevel)
 			{
-				Console.Write("w");
 				return WATER;
 			}
 
             if (elevation < SandLevel)
 			{
-				Console.Write("b");
 				return SAND;
 			}
 
             if (elevation > IceLevel)
 			{
-				Console.Write("s");
 				return SNOW;
 			}
 
 			if (elevation > MountainLevel)
 			{
-				Console.Write("m");
 				return MOUNTAIN;
 			}
 
             if (elevation > ForestLevel)
 			{
-				Console.Write("f");
 				return FOREST;
 			}
-			Console.Write("g");
 			return GRASS;
             
         }

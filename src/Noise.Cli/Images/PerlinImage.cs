@@ -11,6 +11,7 @@ namespace JetabroadNoise.Cli.Images
     {
         public int Width { get; }
         public int Height { get; }
+        
         /// <summary>
         /// The increment of perlin noise space.
         /// </summary>

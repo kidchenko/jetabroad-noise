@@ -2,6 +2,9 @@
 
 namespace JetabroadNoise.Cli.Pixels
 {
+	/// <summary>
+	/// Pixel creator do create monochome pixels
+	/// </summary>
     public class Monochrome : IPixelCreator
     {
         public Rgba32 Create(double noise)

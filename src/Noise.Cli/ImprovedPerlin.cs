@@ -1,21 +1,12 @@
 namespace JetabroadNoise.Cli
 {
+	/// <summary>
+	/// Improved Perlin Noise algorithm
+	/// http://mrl.nyu.edu/~perlin/noise/
+	/// </summary>
     public class ImprovedPerlin 
     {
 
-		public static double OctavePerlin(double x, double y, double z, int octaves, double persistence) {
-			double total = 0;
-			double frequency = 1;
-			double amplitude = 1;
-			for(var i=0;i<octaves;i++) {
-                total += Noise(x * frequency, y * frequency, z * frequency) * amplitude;
-				
-				amplitude *= persistence;
-				frequency *= 2;
-			}
-			return total;
-		}
-		
 		private static readonly int[] Permutation = { 151,160,137,91,90,15,					// Hash lookup table as defined by Ken Perlin.  This is a randomly
 			131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,	// arranged array of all numbers from 0-255 inclusive.
 			190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,

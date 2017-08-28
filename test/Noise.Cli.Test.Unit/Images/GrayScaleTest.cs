@@ -93,5 +93,16 @@ namespace JetabroadNoise.Cli.Test.Unit.Images
             var image = new GrayScaleImage(1, 1, 1);
             image.PixelCreator.Should().BeOfType<Monochrome>();
         }
+        
+        [Fact]
+        public void ShouldCreateTerrainImage()
+        {
+            var terrainImage = new GrayScaleImage(10, 10, .1);
+            var image = terrainImage.CreateImage();
+            var pixel = image.GetPixelReference(4, 4);
+            pixel.R.Should().Be(pixel.G);
+            pixel.G.Should().Be(pixel.B);
+            pixel.B.Should().Be(pixel.R);
+        }
     }
 }

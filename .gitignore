@@ -3,6 +3,8 @@
 #macOS
 .DS_Store
 *.png
+!print-noise.png
+!print-terrain.png
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and

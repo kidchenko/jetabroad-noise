@@ -4,6 +4,9 @@ using JetabroadNoise.Cli.Extensions;
 
 namespace JetabroadNoise.Cli.Options
 {
+    /// <summary>
+    /// Class to parse arguments from docopt.
+    /// </summary>
     public class DocoptOption : IOption
     {
         public int Width { get; }

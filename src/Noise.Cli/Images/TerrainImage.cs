@@ -42,9 +42,22 @@ namespace JetabroadNoise.Cli.Images
                                 + 0.25 * ImprovedPerlin.Noise(PerlinSpaceX, PerlinSpaceY)
                                 + 0.13 * ImprovedPerlin.Noise(PerlinSpaceX, PerlinSpaceY)
                                 + 0.06 * ImprovedPerlin.Noise(PerlinSpaceX, PerlinSpaceY));
-            e /= (1.00 + 0.50 + 0.25 + 0.13 + 0.06);
-            e = Math.Pow(e, 2.2);
+            e = e / (1.00 + 0.50 + 0.25 + 0.13 + 0.06);
+            e = PowDistribution(e);
             return e;
+        }
+
+        /// <summary>
+        /// Do a pow mathematical distribution
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>Return the pow of the number passed in argument</returns>
+        private double PowDistribution(double number)
+        {
+            // big factors will result in a lot of small numbers e.g 0.01 => low elevations; 
+            // small factors will result in a lot of big numbers e.g 0.9 => big elevations;
+            const double fatorToDistribute = 2.2;
+            return Math.Pow(number, fatorToDistribute);
         }
     }
 }
