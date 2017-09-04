@@ -2,8 +2,11 @@ namespace JetabroadNoise.Cli
 {
 	/// <summary>
 	/// Improved Perlin Noise algorithm
-	/// http://mrl.nyu.edu/~perlin/noise/
+	/// Understanding Perlin Noise: http://flafla2.github.io/2014/08/09/perlinnoise.html
+	/// Base implementation: http://mrl.nyu.edu/~perlin/noise/
+	/// C# source code: https://gist.github.com/Flafla2/1a0b9ebef678bbce3215
 	/// </summary>
+
     public class ImprovedPerlin 
     {
 
